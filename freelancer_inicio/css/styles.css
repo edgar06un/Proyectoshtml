@@ -1,0 +1,306 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097A7;
+    --gris: #d7dbdd ;
+    --salmon: #F0E68C;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /*Para boxmodel*/
+    /*Para un scroll mas fluido*/
+    scroll-snap-type: y mandatory;
+}
+
+
+.servicios, 
+.navegacion-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+/*Selecciona a todos los elementodel html, para no afectar el tamaño de los elementos*/
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body {
+    font-size: 16px;
+    font-family: 'Merriweather', serif;
+    background-image: linear-gradient(to top, #F3F0D2 0%, var(--blanco) 100% );
+}
+
+/*Hacemos una clase para generar sombre en la infromación con cssmatic.*/
+.sombra{
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.75);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+h1{
+    font-size: 3.8rem;
+}
+h2{
+    font-size: 2.8rem;
+}
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.titulo {
+    text-align: center; 
+    /*LOS REM SE ADPTAN MEJOR EN GRAN CNANTIDAD DE NAVEGADORES SI AGREGAMOS LOS PRIMEROS DOS STILOS*/
+}
+
+.titulo span {
+    font-size: 2rem;
+}
+
+/*Para centrar todo el contenido*/
+.contenedor{
+    /*Para que adapte de acuerdo a la navegacion*/
+    max-width: 120rem;
+    /*
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;*/
+
+/*margin engloba a todos los valores anteriores*/
+    margin: 0 auto;
+}
+
+
+.boton{
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    /*Para esquinas redondeadas*/
+    border-radius: 0.5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+/*hover es cuando te colocas en cualquier elemento*/
+.boton:hover {
+    cursor: pointer;
+}
+
+/*Para que se reinicie el boton*/
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+}
+
+.nav-bg {
+    background-color: var(--primario);
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.navegacion-principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    /*Para que no marque lo seleccionado*/
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+/*Seudoclases para color al seleccionar*/
+.navegacion-principal a:hover{
+    background-color: var(--gris);
+    color: var(--blanco);
+}
+
+/*Para dispositivos moviles usamos media   comand+shift+P  para los snnippets y 
+buscamos user snippets para css*/
+
+
+.hero{
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+
+}
+
+/*Agregando texto sobre la imagen*/
+.contenido-hero{
+    position: absolute;
+    /*Transparencia en la imagen con rgb el 40% es la cantidad de oscuridad en la imagen*/
+    background-color: rgb(0 0 0 / 40%);
+    width: 100%;
+    height: 100%;
+
+    /*Todo lo coloca de izquierda a derecha con el display felx
+    Con estas cuatro lineas alineamos absolutmante todo
+    */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+    color: var(--blanco);
+}
+
+.contenido .ubicacion{
+    display: flex;
+    /*Alinea verticalmente hacia abajo*/
+    align-items: flex-end;
+}
+
+
+
+/*css grid es para la ubicacion y tamaño de los elementos, en comparacion de flexbox que se ubica donde sea*/
+
+@media (min-width: 768px) {
+    .servicios{
+        /*Para definir el valor y tamaño utilizamos grid-template*/
+        display: grid;
+        /*Los fr son  la graccion de un entero, podemos agregar 2 fr y toma dos fracciones*/
+        grid-template-columns: repeat(3,1fr);
+        column-gap: 2rem;
+    }
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--oscuro);
+    font-weight: bold;
+
+}
+
+.servicio p{
+    /*Para que el texto se vea mejor alineado para leer*/
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--salmon);
+    /*border radios al 50% hace que el cuadrado se convierta en un circulo exacto*/
+    border-radius: 50%;
+    /*Para alinear vertical y horizontalmente*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    background-color: var(--gris);
+    /*min utiliza el valor más pequeño y sino toma el 100% es para ahorrrarnos unos @media */
+    width: min(60rem,100%);
+    /*Utilizamos un margin porque el padre del formulario es un display block, no un flex*/
+    margin: 0 auto;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: right;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--oscuro);
+}
+
+.contenedor-campos{
+    
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/*Para que me seleccione los input de tipo texto*/
+.campo input[type="text"],
+.campo input[type="tel"]{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+/*UTILIDAD*/
+.w-100{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w100{
+        width:auto;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+.enviar .boton{
+    width: 100%;
+}
+
