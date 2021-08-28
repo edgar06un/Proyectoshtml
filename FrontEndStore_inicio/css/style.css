@@ -1,0 +1,217 @@
+:root{
+    --primario: #EC43BE;
+    --primariooscuro: #AC68C0;
+    --naveg: #871167;  
+    --secundario: #FFCE00;
+    --secundarioscuro: #D4AC0D;
+    --blanco: #FFF;
+    --negro: #000;
+    
+    --fuenteprincipal: 'Staatliches', cursive;
+}
+
+/*Variables que siempre dejamos iguales para cualquie proyecto*/
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  /*Globales*/
+body{
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p{
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1,h2,h3{
+    text-align: center;
+    color: var(--secundario);
+    font-family: var(--fuenteprincipal);
+}
+
+h1{font-size: 4rem;}
+h2{font-size: 3.2rem;}
+h3{font-size: 2.4rem;}
+
+/*HEADER*/
+.header{
+    display: flex;
+    justify-content: center;
+
+}
+.header__logo{
+    margin: 3rem 0;
+}
+
+/*Footer*/
+.footer{
+    background-color: #871167;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+.footer__texto{
+    font-family: var(--fuenteprincipal);
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+/*NAVEGACION*/
+.navegacion{
+    background-color: var(--naveg);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    /*PAra que separe los elementos de la navegacion*/
+    /* gap: 2rem; Forma nueva, no hay tanto soporte*/
+}
+.navegacion__enlace{
+    font-family: var(--fuenteprincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+    margin-right: 2rem; /*Forma vieja de separar elementos de la barra de navegación*/
+}
+/*Esta clase selecciona el ultimo elemento para alinear el gap a la derecha*/
+.navegacion__enlace:last-of-type{
+    margin-right: 0;
+}
+/*Para que mantengamos el color agregamos otra clase con un modificador*/
+.navegacion__enlace--activo,
+.navegacion__enlace:hover{
+    color: var(--secundario);
+}
+
+/*GRID:   Para posicionar cada elemento de acuerdo al tamaño de pantalla*/
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /*Para hacer una separación entre el background de las imagenes*/
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }        
+}
+
+/*PRODUCTOS*/
+.producto{
+    background-color: var(--primariooscuro);
+    padding: 1rem;
+}
+.producto__imagen{
+    width: 100%;
+}
+.producto__nombre{
+    font-size: 4rem;
+}
+.producto__precio{
+    font-size: 2.8rem;
+    color: var(--secundario);
+}
+.producto__nombre,
+.producto__precio{
+    font-family: var(--fuenteprincipal);
+    /*Para hacer que entre el texto no tengamos tanta separación*/
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/*Gráficos*/
+.grafico{
+    /*Minimo de altura para las imagenes*/
+    min-height: 30rem;
+    /*Para que la imagen no se repita*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.grafico--camisas{
+    /*Utilizamos grid para posicionar de acuerdo a filas y columnas
+    las imagenes de la página*/
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    background-image: url(../img/grafico1.jpg);
+}
+.grafico--node{
+    background-image: url(../img/grafico2.jpg);
+    grid-column: 1/3;
+    grid-row: 8/9;
+}
+@media (min-width: 768px) {
+    /*Lo ponemos dentro de un mq porque se interpone al hacer dos columnas para
+    un telefono.*/
+    .grafico--node{
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+
+    }   
+}
+
+/*NOSOTROS*/
+.nosotros{
+    /*Con un grid podemos poscionarlo en cualquier parte en un movil*/
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+}
+@media (min-width: 768px) {
+    .nosotros{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+    }
+}
+.nosotros__imagen{
+    grid-row: 1/2;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .nosotros__imagen{
+        grid-column: 2 / 3;
+    }
+}
+
+.nosotros__contenido{
+    text-align: justify;
+    font-family: var(--fuenteprincipal);
+}
+
+/*BLOQUES*/
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .bloques{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+.bloque{
+    text-align: center;
+}
+.bloque__imagen{
+    width: 100%;
+}
+.bloque__titulo{
+    margin: 0;
+}
